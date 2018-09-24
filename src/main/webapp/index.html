@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Angular Spring Curd</title>
+<script type="text/javascript"
+	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.3/angular.min.js"></script>
+<script type="text/javascript"
+	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.3/angular-resource.js"></script>
+<script type="text/javascript" src="app/app.js"></script>
+<script type="text/javascript" src="app/general.controller.js"></script>
+<script type="text/javascript" src="app/user.service.js"></script>
+
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+<!-- Optional theme -->
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css">
+
+<!-- Latest compiled and minified JavaScript -->
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+		<style>
+.formstyle{
+ text-align: center;
+    width:50%;
+    height: 125%;
+    margin-left: 350px;
+    margin-right: 40px;
+    position: relative;
+background: #B993D6;  
+background: -webkit-linear-gradient(to right, #8CA6DB, #B993D6); 
+background: linear-gradient(to right, #8CA6DB, #B993D6); 
+
+ 
+}
+.tablestyle{
+
+
+    width:50%;
+    height: 125%;
+    margin-left: 350px;
+    margin-right: 40px;
+    position: relative;
+ background: #a8ff78;  
+    background: -webkit-linear-gradient(to right, #78ffd6, #a8ff78);  
+    background: linear-gradient(to right, #78ffd6, #a8ff78);
+
+}
+
+h1{
+    font-size: 40px;
+ font-weight: bold;
+text-align: center;
+color:white;
+font-family: "Comic Sans MS", cursive, sans-serif;
+}
+</style>
+</head>
+<body ng-app="crudApp" ng-controller="GeneralController">
+  <div class="formstyle" >
+	<h1>Users</h1>
+	
+			<form  ng-submit="saveUser()">
+				<div class="form-group">
+					<label for="userName">User Name</label> <input type="text"
+						ng-model="user.name" class="form-control" id="userName"
+						placeholder="User Name">
+				</div>
+				<div class="form-group">
+					<label for="userEmail">Email</label> <input type="email"
+						ng-model="user.email" class="form-control"
+						id="userEmail" placeholder="Email">
+				</div>
+
+				<div class="form-group">
+					<label for="userPassword">Password</label> 
+					<input type="password"
+						ng-model="user.password" class="form-control"
+						id="userPassword" placeholder="Password">
+				</div>
+
+				<button type="submit" class="btn btn-primary">{{buttonText}}</button>
+				
+			</form>
+</div><br><br>
+			<div class="table-responsive col-md-6 tablestyle">
+				<table class="table table-striped">
+					<tr >
+						<th>Name</th>
+						<th>Email</th>
+						<th>Password</th>
+						<th></th>
+					</tr>
+					<tr ng-repeat="user in users">
+						<td>{{user.name}}</td>
+						<td>{{user.email}}</td>
+						<td>{{user.password}}</td>
+						<td>
+							<button type="button" class="btn btn-primary"
+								ng-click="updateUserInit(user)">
+								Update
+							</button>
+							<button type="button" class="btn btn-primary"
+								ng-click="deleteUser(user)">
+							Delete
+							</button>
+						</td>
+					</tr>
+				</table>
+			</div>
+
+
+</body>
+</html>
